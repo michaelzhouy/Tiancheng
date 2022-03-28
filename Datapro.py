@@ -11,16 +11,17 @@ class data_process:
 	def __init__(self, clean_label, ifdrop):
 		self.ifclean = clean_label
 		self.ifdrop = ifdrop
-		self.data_dir = os.getcwd() + '/dataset/'
+		# self.data_dir = os.getcwd() + '/dataset/'
+		self.data_dir = '../01-data/'
 
 	def read_data(self):
-		self.op_train = pd.read_csv(self.data_dir + 'content/开放数据_甜橙杯数据建模_中国电信（补充）/operation_train_new.csv')
-		self.trans_train = pd.read_csv(self.data_dir + 'content/开放数据_甜橙杯数据建模_中国电信（补充）/transaction_train_new.csv')
-		self.op_test = pd.read_csv(self.data_dir + '/content/test_operation_round2.csv')
-		self.trans_test = pd.read_csv(self.data_dir + '/content/test_transaction_round2.csv')
-		self.Label = pd.read_csv(self.data_dir + 'content/开放数据_甜橙杯数据建模_中国电信（补充）/tag_train_new.csv')
-		self.sub = pd.read_csv(self.data_dir + '/content/submit_example.csv')
-		self.w2v = pd.read_csv(self.data_dir + '/content/w2v_features.csv')
+		self.op_train = pd.read_csv(self.data_dir + 'operation_train_new.csv')
+		self.trans_train = pd.read_csv(self.data_dir + 'transaction_train_new.csv')
+		self.op_test = pd.read_csv(self.data_dir + 'operation_round1_new.csv')
+		self.trans_test = pd.read_csv(self.data_dir + 'transaction_round1_new.csv')
+		self.Label = pd.read_csv(self.data_dir + 'tag_train_new.csv')
+		self.sub = pd.read_csv(self.data_dir + '提交样例.csv')
+		self.w2v = pd.read_csv(self.data_dir + 'w2v_features.csv')
 
 	def data_clean(self):
 		self.op_train['device_code3'] = self.op_train['device_code3'].apply(lambda x: np.nan if x =='14c09cc8ce23d46c' else x)
